@@ -1,12 +1,19 @@
-FROM node:bookworm-slim
-ENV NODE_ENV=production
-
+# -------- Stage 1: Install dependencies ---------
+FROM node:bookworm-slim AS build
 WORKDIR /app
 
-COPY ["package.json", "./"]
+# Copy dependency descriptors and install only production packages
+COPY package.json package-lock.json ./
+RUN npm ci --only=production
 
-RUN npm install
+# -------- Stage 2: Create lightweight runtime image ---------
+FROM node:alpine
+ENV NODE_ENV=production
+WORKDIR /app
 
+# Copy installed modules and application code
+COPY --from=build /app/node_modules ./node_modules
 COPY . .
 
-CMD [ "node", "index.js" ]
+# Start the application
+CMD ["npm", "start"]
