@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import http from "node:http";
 import path from "node:path";
+import { PassThrough } from "node:stream";
 import { createBareServer } from "@nebula-services/bare-server-node";
 import chalk from "chalk";
 import cookieParser from "cookie-parser";
@@ -20,6 +21,10 @@ const app = express();
 const bareServer = createBareServer("/ca/");
 const PORT = process.env.PORT || 8080;
 const cache = new Map();
+const cacheDir = path.join(__dirname, "cache");
+if (!fs.existsSync(cacheDir)) {
+  fs.mkdirSync(cacheDir);
+}
 const CACHE_TTL = 30 * 24 * 60 * 60 * 1000; // Cache for 30 Days
 const CACHE_MAX_ENTRIES = 100; // Maximum number of cached items
 const BASE_URLS = {
@@ -48,14 +53,17 @@ app.get("/e/*", async (req, res, next) => {
   try {
     if (cache.has(req.path)) {
       const cached = cache.get(req.path);
-      const { data, contentType, timestamp } = cached;
-      if (Date.now() - timestamp > CACHE_TTL) {
+      const { filePath, contentType, timestamp } = cached;
+      if (Date.now() - timestamp > CACHE_TTL || !fs.existsSync(filePath)) {
         cache.delete(req.path);
+        if (fs.existsSync(filePath)) {
+          fs.unlink(filePath, () => {});
+        }
       } else {
         cache.delete(req.path); // move to end to mark as recently used
         cache.set(req.path, cached);
         res.writeHead(200, { "Content-Type": contentType });
-        return res.end(data);
+        return fs.createReadStream(filePath).pipe(res);
       }
     }
 
@@ -73,24 +81,43 @@ app.get("/e/*", async (req, res, next) => {
     }
 
     const asset = await fetch(reqTarget);
-    if (!asset.ok) {
+    if (!asset.ok || !asset.body) {
       return next();
     }
 
-    const data = Buffer.from(await asset.arrayBuffer());
     const ext = path.extname(reqTarget);
     const no = [".unityweb"];
     const contentType = no.includes(ext)
       ? "application/octet-stream"
-      : mime.getType(ext);
+      : mime.getType(ext) || "application/octet-stream";
+
+    res.writeHead(200, { "Content-Type": contentType });
+    const filePath = path.join(
+      cacheDir,
+      Buffer.from(req.path).toString("base64")
+    );
+    const fileStream = fs.createWriteStream(filePath);
+    const pass = new PassThrough();
+
+    asset.body.pipe(pass);
+    pass.pipe(res);
+    pass.pipe(fileStream);
+
+    await new Promise((resolve, reject) => {
+      fileStream.on("finish", resolve);
+      fileStream.on("error", reject);
+      asset.body.on("error", reject);
+    });
 
     if (cache.size >= CACHE_MAX_ENTRIES) {
       const oldestKey = cache.keys().next().value;
+      const oldest = cache.get(oldestKey);
       cache.delete(oldestKey);
+      if (oldest?.filePath) {
+        fs.unlink(oldest.filePath, () => {});
+      }
     }
-    cache.set(req.path, { data, contentType, timestamp: Date.now() });
-    res.writeHead(200, { "Content-Type": contentType });
-    res.end(data);
+    cache.set(req.path, { filePath, contentType, timestamp: Date.now() });
   } catch (error) {
     console.error("Error fetching asset:", error);
     res.setHeader("Content-Type", "text/html");
