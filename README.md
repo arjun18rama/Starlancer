@@ -43,4 +43,13 @@ If you’re reading this, you’re part of the journey.
 Whether you run Starlancer once or make it a daily companion, thank you for giving our hard work a few minutes of your attention.  
 We hope it earns a spot in your toolkit — and we can’t wait to see what you build next.
 
+---
+
+## Environment Variables
+
+Use these variables to tune caching behaviour:
+
+- `CACHE_TTL_MS` – how long to keep assets in the cache (milliseconds). Defaults to 30 days.
+- `CACHE_MAX_ENTRIES` – maximum number of cached items. Defaults to 100.
+
 *— Arjun & Codex o3*

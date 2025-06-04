@@ -9,6 +9,7 @@ import express from "express";
 import basicAuth from "express-basic-auth";
 import mime from "mime";
 import fetch from "node-fetch";
+import { LRUCache } from "lru-cache";
 // import { setupMasqr } from "./Masqr.js";
 import config from "./config.js";
 
@@ -19,9 +20,9 @@ const server = http.createServer();
 const app = express();
 const bareServer = createBareServer("/ca/");
 const PORT = process.env.PORT || 8080;
-const cache = new Map();
-const CACHE_TTL = 30 * 24 * 60 * 60 * 1000; // Cache for 30 Days
-const CACHE_MAX_ENTRIES = 100; // Maximum number of cached items
+const CACHE_TTL = Number(process.env.CACHE_TTL_MS) || 30 * 24 * 60 * 60 * 1000; // default 30 days
+const CACHE_MAX_ENTRIES = Number(process.env.CACHE_MAX_ENTRIES) || 100;
+const cache = new LRUCache({ max: CACHE_MAX_ENTRIES, ttl: CACHE_TTL });
 const BASE_URLS = {
   "/e/1/": "https://raw.githubusercontent.com/qrs/x/fixy/",
   "/e/2/": "https://raw.githubusercontent.com/3v1/V5-Assets/main/",
@@ -46,17 +47,11 @@ if (config.challenge !== false) {
 
 app.get("/e/*", async (req, res, next) => {
   try {
-    if (cache.has(req.path)) {
-      const cached = cache.get(req.path);
-      const { data, contentType, timestamp } = cached;
-      if (Date.now() - timestamp > CACHE_TTL) {
-        cache.delete(req.path);
-      } else {
-        cache.delete(req.path); // move to end to mark as recently used
-        cache.set(req.path, cached);
-        res.writeHead(200, { "Content-Type": contentType });
-        return res.end(data);
-      }
+    const cached = cache.get(req.path);
+    if (cached) {
+      const { data, contentType } = cached;
+      res.writeHead(200, { "Content-Type": contentType });
+      return res.end(data);
     }
 
     let reqTarget;
@@ -84,11 +79,7 @@ app.get("/e/*", async (req, res, next) => {
       ? "application/octet-stream"
       : mime.getType(ext);
 
-    if (cache.size >= CACHE_MAX_ENTRIES) {
-      const oldestKey = cache.keys().next().value;
-      cache.delete(oldestKey);
-    }
-    cache.set(req.path, { data, contentType, timestamp: Date.now() });
+    cache.set(req.path, { data, contentType });
     res.writeHead(200, { "Content-Type": contentType });
     res.end(data);
   } catch (error) {
