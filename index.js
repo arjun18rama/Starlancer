@@ -6,6 +6,7 @@ import chalk from "chalk";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import express from "express";
+import compression from "compression";
 import basicAuth from "express-basic-auth";
 import mime from "mime";
 import fetch from "node-fetch";
@@ -101,6 +102,7 @@ app.get("/e/*", async (req, res, next) => {
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(compression());
 
 /* if (process.env.MASQR === "true") {
   console.log(chalk.green("Masqr is enabled"));
