@@ -44,7 +44,7 @@ if (config.challenge !== false) {
   app.use(basicAuth({ users: config.users, challenge: true }));
 }
 
-app.get("/e/*", async (req, res, next) => {
+app.get("/e/*path", async (req, res, next) => {
   try {
     if (cache.has(req.path)) {
       const cached = cache.get(req.path);
