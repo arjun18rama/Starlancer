@@ -35,3 +35,10 @@ By keeping your site up to date, you not only enjoy the latest features but also
 If you encounter any challenges while updating, feel free to reach out to our [support team](https://discord.gg/starlancer) for assistance.
 
 Thank you for prioritizing the security and performance of your experience with our site.
+
+### Request Throttling and Trusted CORS
+
+The application limits repeated requests from the same IP address using
+`express-rate-limit`. Allowed CORS origins are defined through the
+`TRUSTED_ORIGINS` environment variable. Requests from other origins are
+rejected.
