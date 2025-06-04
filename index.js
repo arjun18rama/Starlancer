@@ -155,4 +155,8 @@ server.on("listening", () => {
   console.log(chalk.green(`🌍 Server is running on http://localhost:${PORT}`));
 });
 
-server.listen({ port: PORT });
+if (process.env.NODE_ENV !== "test") {
+  server.listen({ port: PORT });
+}
+
+export { app, cache, server };
