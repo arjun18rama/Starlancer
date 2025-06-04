@@ -17,7 +17,7 @@ function parseUsers(value) {
 }
 
 const DEFAULT_USERS = {
-  starlancer: "password",
+  interstellar: "password",
 };
 
 const config = {
