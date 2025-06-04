@@ -50,7 +50,7 @@ img {
    float: left;
    text-transform: uppercase;
    font-size: 30px;
-   font-family: "Inter", sans-serif;
+   font-family: "Roboto", sans-serif;
    cursor: pointer;
    color: var(--text-primary);
    font-weight: 600;
@@ -80,7 +80,7 @@ img {
    color: var(--text-primary);
    font-weight: 800;
    right: 2%;
-   font-family: "Inter", sans-serif;
+   font-family: "Roboto", sans-serif;
    font-style: normal;
    text-decoration: none;
    transition: all 0.2s ease;
@@ -96,7 +96,7 @@ img {
       color: var(--text-primary);
       font-weight: 800;
       right: 2%;
-      font-family: "Inter", sans-serif;
+      font-family: "Roboto", sans-serif;
       font-style: normal;
       text-decoration: none;
       transition: all 0.2s ease;
@@ -106,7 +106,7 @@ img {
       text-transform: uppercase;
       cursor: pointer;
       font-weight: 800;
-      font-family: "Inter", sans-serif;
+      font-family: "Roboto", sans-serif;
       font-style: normal;
       font-size: 3vw;
       transform: translateX(-20%);
@@ -117,7 +117,7 @@ img {
    text-transform: uppercase;
    cursor: pointer;
    font-weight: 800;
-   font-family: "Inter", sans-serif;
+   font-family: "Roboto", sans-serif;
    font-style: normal;
    font-size: 3vh;
    transform: translateX(-20%);

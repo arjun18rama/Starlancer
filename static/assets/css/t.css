@@ -1,8 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
 body {
-   font-family: "Inter", sans-serif;
+   font-family: "Roboto", sans-serif;
    text-decoration: none;
    margin: 0;
    overflow-x: hidden;
@@ -103,7 +102,7 @@ body {
    text-transform: uppercase;
    cursor: pointer;
    font-weight: 800;
-   font-family: "Inter", sans-serif;
+   font-family: "Roboto", sans-serif;
    font-style: normal;
    font-size: 3vw;
    transform: translateX(-20%);
@@ -113,7 +112,7 @@ body {
    text-transform: uppercase;
    cursor: pointer;
    font-weight: 800;
-   font-family: "Inter", sans-serif;
+   font-family: "Roboto", sans-serif;
    font-style: normal;
    font-size: 3vh;
    transform: translateX(-20%);
