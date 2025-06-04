@@ -21,6 +21,7 @@ const bareServer = createBareServer("/ca/");
 const PORT = process.env.PORT || 8080;
 const cache = new Map();
 const CACHE_TTL = 30 * 24 * 60 * 60 * 1000; // Cache for 30 Days
+const CACHE_MAX_ENTRIES = 100; // Maximum number of cached items
 
 if (config.challenge !== false) {
   console.log(
@@ -36,10 +37,13 @@ if (config.challenge !== false) {
 app.get("/e/*", async (req, res, next) => {
   try {
     if (cache.has(req.path)) {
-      const { data, contentType, timestamp } = cache.get(req.path);
+      const cached = cache.get(req.path);
+      const { data, contentType, timestamp } = cached;
       if (Date.now() - timestamp > CACHE_TTL) {
         cache.delete(req.path);
       } else {
+        cache.delete(req.path); // move to end to mark as recently used
+        cache.set(req.path, cached);
         res.writeHead(200, { "Content-Type": contentType });
         return res.end(data);
       }
@@ -75,6 +79,10 @@ app.get("/e/*", async (req, res, next) => {
       ? "application/octet-stream"
       : mime.getType(ext);
 
+    if (cache.size >= CACHE_MAX_ENTRIES) {
+      const oldestKey = cache.keys().next().value;
+      cache.delete(oldestKey);
+    }
     cache.set(req.path, { data, contentType, timestamp: Date.now() });
     res.writeHead(200, { "Content-Type": contentType });
     res.end(data);

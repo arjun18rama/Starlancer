@@ -377,6 +377,7 @@ function exportSaveData() {
   function getCookies() {
     const cookies = document.cookie.split("; ");
     const cookieObj = {};
+    // biome-ignore lint/complexity/noForEach: existing project style
     cookies.forEach(cookie => {
       const [name, value] = cookie.split("=");
       cookieObj[name] = value;
@@ -386,6 +387,7 @@ function exportSaveData() {
   function getLocalStorage() {
     const localStorageObj = {};
     for (const key in localStorage) {
+      // biome-ignore lint/suspicious/noPrototypeBuiltins:
       if (localStorage.hasOwnProperty(key)) {
         localStorageObj[key] = localStorage.getItem(key);
       }
@@ -420,11 +422,13 @@ function importSaveData() {
       try {
         const data = JSON.parse(e.target.result);
         if (data.cookies) {
+          // biome-ignore lint/complexity/noForEach: existing project style
           Object.entries(data.cookies).forEach(([key, value]) => {
             document.cookie = `${key}=${value}; path=/`;
           });
         }
         if (data.localStorage) {
+          // biome-ignore lint/complexity/noForEach: existing project style
           Object.entries(data.localStorage).forEach(([key, value]) => {
             localStorage.setItem(key, value);
           });
