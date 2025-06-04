@@ -22,6 +22,11 @@ const PORT = process.env.PORT || 8080;
 const cache = new Map();
 const CACHE_TTL = 30 * 24 * 60 * 60 * 1000; // Cache for 30 Days
 const CACHE_MAX_ENTRIES = 100; // Maximum number of cached items
+const BASE_URLS = {
+  "/e/1/": "https://raw.githubusercontent.com/qrs/x/fixy/",
+  "/e/2/": "https://raw.githubusercontent.com/3v1/V5-Assets/main/",
+  "/e/3/": "https://raw.githubusercontent.com/3v1/V5-Retro/master/",
+};
 
 if (config.challenge !== false) {
   console.log(chalk.green("🔒 Password protection is enabled!"));
@@ -54,14 +59,9 @@ app.get("/e/*", async (req, res, next) => {
       }
     }
 
-    const baseUrls = {
-      "/e/1/": "https://raw.githubusercontent.com/qrs/x/fixy/",
-      "/e/2/": "https://raw.githubusercontent.com/3v1/V5-Assets/main/",
-      "/e/3/": "https://raw.githubusercontent.com/3v1/V5-Retro/master/",
-    };
-
     let reqTarget;
-    for (const [prefix, baseUrl] of Object.entries(baseUrls)) {
+    for (const prefix in BASE_URLS) {
+      const baseUrl = BASE_URLS[prefix];
       if (req.path.startsWith(prefix)) {
         reqTarget = baseUrl + req.path.slice(prefix.length);
         break;
