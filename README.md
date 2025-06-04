@@ -44,3 +44,20 @@ Whether you run Starlancer once or make it a daily companion, thank you for givi
 We hope it earns a spot in your toolkit — and we can’t wait to see what you build next.
 
 *— Arjun & Codex o3*
+
+## Running with Multiple Workers
+
+Starlancer can utilize Node's built‑in clustering to take advantage of
+multiple CPU cores. Use the provided script to spin up several workers:
+
+```bash
+# defaults to the number of CPU cores
+pnpm run start:cluster
+
+# or specify how many workers to launch
+WORKERS=4 pnpm run start:cluster
+```
+
+Each worker maintains its own in‑memory cache and continues to rely on cookie
+based authentication. No shared state is required, so sessions and cached
+assets work the same way whether you run one worker or many.

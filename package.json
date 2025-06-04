@@ -8,6 +8,7 @@
   },
   "scripts": {
     "start": "node index.js",
+    "start:cluster": "node cluster.js",
     "format": "biome format --write .",
     "precommit": "pnpm run format && biome check --write .",
     "lint": "biome lint --write ."
