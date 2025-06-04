@@ -1,6 +1,7 @@
 // c.js
 let appInd;
-const g = window.location.pathname === "/a";
+const g =
+  window.location.pathname === "/a" || window.location.pathname === "/play.html";
 const a = window.location.pathname === "/b";
 const c = window.location.pathname === "/gt";
 

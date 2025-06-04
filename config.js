@@ -4,15 +4,12 @@ dotenv.config();
 
 function parseUsers(value) {
   const users = {};
-  value
-    .split(",")
-    .map(entry => entry.trim())
-    .forEach(entry => {
-      const [username, password] = entry.split(":");
-      if (username && password) {
-        users[username] = password;
-      }
-    });
+  for (const entry of value.split(",").map(entry => entry.trim())) {
+    const [username, password] = entry.split(":");
+    if (username && password) {
+      users[username] = password;
+    }
+  }
   return users;
 }
 
