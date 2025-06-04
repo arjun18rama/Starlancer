@@ -1,5 +1,5 @@
 import fs from "node:fs";
-import http from "node:http";
+import spdy from "spdy";
 import path from "node:path";
 import { createBareServer } from "@nebula-services/bare-server-node";
 import chalk from "chalk";
@@ -15,7 +15,12 @@ import config from "./config.js";
 console.log(chalk.yellow("🚀 Starting server..."));
 
 const __dirname = process.cwd();
-const server = http.createServer();
+const server = spdy.createServer({
+  spdy: {
+    plain: true,
+    protocols: ["h2", "http/1.1"],
+  },
+});
 const app = express();
 const bareServer = createBareServer("/ca/");
 const PORT = process.env.PORT || 8080;
