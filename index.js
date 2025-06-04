@@ -8,6 +8,7 @@ import cors from "cors";
 import express from "express";
 import compression from "compression";
 import basicAuth from "express-basic-auth";
+import rateLimit from "express-rate-limit";
 import mime from "mime";
 import fetch from "node-fetch";
 // import { setupMasqr } from "./Masqr.js";
@@ -20,6 +21,25 @@ const server = http.createServer();
 const app = express();
 const bareServer = createBareServer("/ca/");
 const PORT = process.env.PORT || 8080;
+const trustedOrigins = (process.env.TRUSTED_ORIGINS || "")
+  .split(",")
+  .map(origin => origin.trim())
+  .filter(Boolean);
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (!origin || trustedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+};
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+  standardHeaders: true,
+  legacyHeaders: false,
+});
 const cache = new Map();
 const CACHE_TTL = 30 * 24 * 60 * 60 * 1000; // Cache for 30 Days
 const CACHE_MAX_ENTRIES = 100; // Maximum number of cached items
@@ -102,7 +122,7 @@ app.get("/e/*", async (req, res, next) => {
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(compression());
+
 
 /* if (process.env.MASQR === "true") {
   console.log(chalk.green("Masqr is enabled"));
@@ -110,7 +130,7 @@ app.use(compression());
 } */
 
 app.use(express.static(path.join(__dirname, "static")));
-app.use("/ca", cors({ origin: true }));
+app.use("/ca", cors(corsOptions));
 
 const routes = [
   { path: "/b", file: "apps.html" },

@@ -4,4 +4,4 @@ dotenv.config();
 
 function parseUsers(value) {
   const users = {};
-};
+}
