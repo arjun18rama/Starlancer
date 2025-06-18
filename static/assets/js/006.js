@@ -226,7 +226,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   resetButton.addEventListener("click", () => {
     localStorage.removeItem("backgroundImage");
-    document.body.style.backgroundImage = "url('default-background.jpg')";
+    document.body.style.backgroundImage =
+      "url('/assets/media/background/full-main.png')";
     window.location.reload();
   });
 });
