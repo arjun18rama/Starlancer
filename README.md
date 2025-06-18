@@ -19,6 +19,7 @@
 - 📈 **SQLite telemetry tracking** – Logs command metadata, timestamps, and response types
 - 📊 **Web dashboard (WIP)** – FastAPI or Node-based analytics panel
 - 🤖 **Codex-injected tools** – Ready for AI-augmented commands and task generation
+- 🧠 Supports full AI agent integration with editable logging
 
 ---
 
