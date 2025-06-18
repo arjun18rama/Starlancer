@@ -11,5 +11,5 @@ The following tasks are available for any supporting agents working on this repo
 - Add an environment variable to override the license server URL.
 
 ## 3. Documentation Improvements
-- Update `README.md` with deployment instructions for platforms such as Vercel and Heroku.
+- Update `README.md` with deployment instructions for Koyeb.
 - Provide an `.env.example` file showcasing all configurable options.
