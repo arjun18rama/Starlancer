@@ -54,6 +54,14 @@ Or run via Docker:
 docker build -t starlancer .
 docker run -p 8080:8080 starlancer
 
+### Deploying to Koyeb
+
+1. Sign in to your Koyeb account and create a new App.
+2. Connect this repository as the deployment source.
+3. Koyeb automatically builds using the included `Dockerfile`.
+4. Expose port `8080` and deploy the service.
+
+
 
 ⸻
 
