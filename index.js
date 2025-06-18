@@ -143,3 +143,5 @@ server.on("listening", () => {
 });
 
 server.listen({ port: PORT });
+
+export { app, server };

@@ -10,7 +10,8 @@
     "start": "node index.js",
     "format": "biome format --write .",
     "precommit": "pnpm run format && biome check --write .",
-    "lint": "biome lint --write ."
+    "lint": "biome lint --write .",
+    "test": "jest"
   },
   "author": "InterstellarNetwork",
   "license": "GPL-3.0-or-later",
@@ -26,7 +27,8 @@
     "node-fetch": "^3.3.2"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.9.4"
+    "@biomejs/biome": "1.9.4",
+    "jest": "^30.0.0"
   },
   "packageManager": "pnpm@9.10.0"
 }
