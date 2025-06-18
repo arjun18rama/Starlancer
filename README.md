@@ -46,6 +46,9 @@ pnpm install
 
 pnpm start
 
+# Run tests
+pnpm test
+
 Or run via Docker:
 
 docker build -t starlancer .
