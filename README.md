@@ -101,4 +101,8 @@ Built with ✨ by Arjun + Codex.
 
 ---
 
+## License
+
+Starlancer is licensed under the **GNU Affero General Public License v3.0 or later**. See [LICENSE](./LICENSE) for more details.
+
 Let me know if you want to tailor it more for a specific use case (school bypass, AI CLI, etc.), or if you want to add badges, deployment buttons, or links to docs/demo videos.
