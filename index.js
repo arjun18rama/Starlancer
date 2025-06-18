@@ -140,6 +140,7 @@ server.on("upgrade", (req, socket, head) => {
 
 server.on("listening", () => {
   console.log(chalk.green(`🌍 Server is running on http://localhost:${PORT}`));
+  console.log("✅ Ads removed. Starlancer is clean.");
 });
 
 server.listen({ port: PORT });

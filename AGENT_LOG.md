@@ -4,3 +4,4 @@
 - [2025-06-18T20:20:03Z] Expanded AGENTS.md with detailed instructions
 [2025-06-18T20:29:51.836Z] Rebrand the gui
 [2025-06-18T20:38:49.415Z] Update GUI shadow and round all buttons
+[2025-06-18T21:11:55.153Z] Removed ad-related scripts and added cleanup log message
