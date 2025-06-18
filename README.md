@@ -76,6 +76,19 @@ TRUSTED_ORIGINS	Comma list of allowed domains	localhost,example.com
 
 You can also create a .env file in the project root.
 
+## 📝 Task Logging
+
+Use `logDoIt.js` to record completed tasks. Example:
+
+```js
+import { logDoIt } from "./logDoIt.js";
+
+logDoIt("Describe what you did");
+```
+
+Each call appends a timestamped entry to `AGENT_LOG.md`.
+
+
 ⸻
 
 🛠 Developer Notes
