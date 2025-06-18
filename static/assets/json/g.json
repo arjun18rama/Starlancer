@@ -6,9 +6,9 @@
     "custom": "true"
   },
   {
-    "name": "! Starlancer FAQ/Docs",
+    "name": "! Interstellar FAQ/Docs",
     "image": "/assets/media/icons/help_center_googlefonts.png",
-    "link": "https://docs.gostarlancer.app",
+    "link": "https://docs.gointerstellar.app",
     "categories": ["all"]
   },
   {
@@ -356,7 +356,7 @@
     "image": "/assets/media/icons/nealfun.webp",
     "categories": ["all"],
     "error": "true",
-    "say": "Neal.fun does not work on Starlancer because of Cloudflare protection."
+    "say": "Neal.fun does not work on Interstellar because of Cloudflare protection."
   },
   {
     "name": "YoHoHo.io",
