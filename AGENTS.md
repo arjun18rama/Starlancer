@@ -13,3 +13,20 @@ The following tasks are available for any supporting agents working on this repo
 ## 3. Documentation Improvements
 - Update `README.md` with deployment instructions for Koyeb.
 - Provide an `.env.example` file showcasing all configurable options.
+
+## 4. Do-It Message Logging
+- Create a small logging helper to capture every "do it" instruction in detail.
+- The helper should append each message with a timestamp to `doit.log`.
+- Example implementation:
+
+```js
+// logDoIt.js
+import fs from "node:fs";
+
+export function logDoIt(message) {
+  const entry = `[${new Date().toISOString()}] ${message}\n`;
+  fs.appendFileSync("doit.log", entry);
+}
+```
+
+- Run this after completing each task so `doit.log` stays up to date.
