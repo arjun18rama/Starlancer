@@ -1,6 +1,12 @@
-const { spawn } = require("child_process");
+const { spawn } = require("node:child_process");
 const PORT = 31337;
 let server;
+
+if (!global.fetch) {
+  global.fetch = (...args) =>
+    import("node-fetch").then(({ default: fetch }) => fetch(...args));
+}
+
 const fetch = global.fetch;
 jest.setTimeout(10000);
 
