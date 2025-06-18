@@ -5,7 +5,7 @@ loadEnv();
 const envChallenge = process.env.CHALLENGE || "false";
 const challenge = ["true", "1", "yes"].includes(envChallenge.toLowerCase());
 
-let users = { starlancer: "password" };
+let users = { interstellar: "password" };
 if (process.env.USERS) {
   users = {};
   for (const pair of process.env.USERS.split(",")) {
