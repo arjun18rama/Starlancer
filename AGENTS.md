@@ -16,7 +16,7 @@ The following tasks are available for any supporting agents working on this repo
 
 ## 4. Do-It Message Logging
 - Create a small logging helper to capture every "do it" instruction in detail.
-- The helper should append each message with a timestamp to `doit.log`.
+- The helper should append each message with a timestamp to `AGENT_LOG.md`.
 - Example implementation:
 
 ```js
@@ -25,8 +25,8 @@ import fs from "node:fs";
 
 export function logDoIt(message) {
   const entry = `[${new Date().toISOString()}] ${message}\n`;
-  fs.appendFileSync("doit.log", entry);
+  fs.appendFileSync("AGENT_LOG.md", entry);
 }
 ```
 
-- Run this after completing each task so `doit.log` stays up to date.
+- Run this after completing each task so `AGENT_LOG.md` stays up to date.
