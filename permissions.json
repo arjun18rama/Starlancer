@@ -1,0 +1,10 @@
+{
+  "agents": {
+    "default": {
+      "read": true,
+      "write": true,
+      "modifyAllFiles": true,
+      "allowedPaths": ["*"]
+    }
+  }
+}
