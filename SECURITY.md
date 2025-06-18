@@ -1,37 +1,42 @@
-# Security Policy
-
-## Supported Versions
-
-Only current versions of the site are being updated, if you are using an older version of the site, consider upgrading to the latest version.
-
-| Version | Supported |
-| ------- | --------- |
-| V5.2.x  | ✔️        |
-| V5.1.x  | :x:       |
-| V5.0.x  | :x:       |
-| V4.x.x  | :x:       |
-| < V4.0  | :x:       |
+# 🔒 Security Policy
 
 ## Reporting a Vulnerability
 
-You can privately report a vulnerability [here](https://github.com/InterstellarNetwork/Interstellar/security/advisories/new).
+If you discover a security vulnerability within **Starlancer**, please **do not open an issue or pull request directly**.
 
-Alternatively, you can contact our support team and let us know what the vulnerability is.
+Instead, please contact us privately:
 
-### Upgrading to the Latest Version
+- 📧 Email: `security@starlancer.dev` *(placeholder)*
+- 📬 GitHub Issues: mark with `[SECURITY]` in the title (will be triaged privately)
 
-If you are using an older version of the site, we strongly recommend upgrading to the latest version to ensure that you benefit from the latest security updates and enhancements. Only the current versions of the site receive regular updates and support.
+We will investigate and respond as quickly as possible.
 
-### How to Update
+---
 
-If you have a fork of the repository:
-Then [sync your fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork).
+## Supported Versions
 
-If you have interstellar installed locally:
-Run `git pull`, and `npm i`.
+| Version | Supported? |
+|---------|------------|
+| `main`  | ✅ |
+| `add-free` | ✅ |
+| older branches | ❌ |
 
-By keeping your site up to date, you not only enjoy the latest features but also enhance the security of your experience.
+---
 
-If you encounter any challenges while updating, feel free to reach out to our support team for assistance.
+## Disclosure Policy
 
-Thank you for prioritizing the security and performance of your experience with our site.
+We follow a **coordinated disclosure** process:
+
+- You report → we confirm & patch → we publicly acknowledge the fix only after the issue is resolved.
+- You may receive credit unless anonymity is requested.
+
+---
+
+## Notes
+
+- This project is experimental and should not be used in production environments where real user data or privileged access is at risk.
+- We welcome community security audits and reviews.
+
+---
+
+*Built with care by Arjun + Codex o3.*
