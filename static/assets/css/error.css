@@ -34,7 +34,7 @@
 
 .error button {
    padding: 15px;
-   border-radius: 5px;
+   border-radius: 50%;
    background: var(--background-buttons);
    color: inherit;
    font-size: 24px;
