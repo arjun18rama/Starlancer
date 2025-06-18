@@ -16,7 +16,7 @@ Only current versions of the site are being updated, if you are using an older v
 
 You can privately report a vulnerability [here](https://github.com/InterstellarNetwork/Interstellar/security/advisories/new).
 
-Alternatively, you can join our [Discord server](https://discord.gg/Interstellar), and open a ticket and let us know what the vulnerability is.
+Alternatively, you can contact our support team and let us know what the vulnerability is.
 
 ### Upgrading to the Latest Version
 
@@ -32,6 +32,6 @@ Run `git pull`, and `npm i`.
 
 By keeping your site up to date, you not only enjoy the latest features but also enhance the security of your experience.
 
-If you encounter any challenges while updating, feel free to reach out to our [support team](https://discord.gg/interstellar) for assistance.
+If you encounter any challenges while updating, feel free to reach out to our support team for assistance.
 
 Thank you for prioritizing the security and performance of your experience with our site.
