@@ -1,141 +1,93 @@
-<div align="center">
-    <img src="https://raw.githubusercontent.com/UseInterstellar/Interstellar/main/.github/branding/in.png">
-    <p>Serving over 8+ million users since 2023.<p>
-    <p>Starlancer is a web proxy with a Clean and Sleek UI and easy to use menus. Our goal is to provide the best user experience to everyone.</p>
-</div>
-
-![inpreview](https://github.com/UseInterstellar/Interstellar/assets/89202835/2669efed-5186-4932-83c4-725acae60bd2)
-
-> [!IMPORTANT]
-> If you fork this project, consider giving it a star in the original repository!
-
-**Join Our [Discord Community](https://discord.gg/interstellar) for support, more links, and an active community!**
-
-## Features
-
-- About:Blank Cloaking
-- Tab Cloaking
-- Wide collection of apps & games
-- Clean, Easy to use UI
-- Inspect Element
-- Various Themes
-- Password Protection (Optional)
-- Built-in Tab System
-- Now.gg Support
-- Fast Speeds
-- Geforce NOW Support
-
-## Deployment
-
-> [!IMPORTANT]
-> You **cannot** deploy to static web hosts, including Netlify, Cloudflare Pages, and GitHub Pages.
-
-### Password Protection
-
-1. Go to the `config.js` file and set `challenge` to **true**. Then, set the environment variable as follows:
-2. For PNPM: Run either `config=true pnpm start` or `$env:config=true; pnpm start`, depending on your server.
-3. For Bun: Run either `config=true bun start` or `$env:config=true; bun start` if you prefer Bun.
-4. For NPM: Run either `config=true npm start` or `$env:config=true; npm start` if you prefer NPM.
 
 
-### Server Deployment
+⸻
 
-You must run these commands on your server:
+
+# 🚀 Starlancer
+
+**Starlancer** is a next-gen proxy + AI tooling platform built with performance, stealth, and flexibility in mind. Developed by **Arjun** and powered by **OpenAI Codex (o3)**, it's designed to push past traditional limits—whether you're bypassing filtered networks, logging command telemetry, or crafting a fully modular security-aware backend.
+
+> ⚠️ This is an experimental project. Use ethically and responsibly.
+
+---
+
+## ✨ Highlights
+
+- 🔐 **Stealth Proxy Layer** – DNS-safe, with potential Securly evasive tactics (in progress)
+- ⚙️ **Rate-limited Express server** – Secure, tunable request handling
+- 🌍 **Docker-ready** – Fast deploys across any Linux VM
+- 📈 **SQLite telemetry tracking** – Logs command metadata, timestamps, and response types
+- 📊 **Web dashboard (WIP)** – FastAPI or Node-based analytics panel
+- 🤖 **Codex-injected tools** – Ready for AI-augmented commands and task generation
+
+---
+
+## 📦 Stack
+
+| Component | Tech |
+|----------|------|
+| Backend | Node.js + Express |
+| Data Layer | SQLite |
+| Proxy Logic | Custom (via Express middleware, more to come) |
+| Containerization | Docker + pnpm |
+| AI Automation | Codex (via OpenAI CLI or Copilot Chat) |
+
+---
+
+## 🚀 Quickstart
 
 ```bash
-git clone https://github.com/UseInterstellar/Interstellar
-cd Interstellar
-```
+git clone https://github.com/arjun18rama/Starlancer.git
+cd Starlancer
 
-#### Ad-Free Deployment
+corepack enable
+corepack prepare pnpm@latest --activate
+pnpm install
 
-```bash
-git clone --branch Ad-Free https://github.com/UseInterstellar/Interstellar
-cd Interstellar
-```
-
-Next depending on your package manager, run one of the following commands:
-
-#### Bun
-
-If you are using Bun, run the following commands:
-
-```bash
-bun i
-bun start
-```
-
-#### pnpm
-
-If you are using pnpm, run the following commands:
-
-```bash
-pnpm i
 pnpm start
-```
 
-#### npm
+Or run via Docker:
 
-If you are using npm, run the following commands:
+docker build -t starlancer .
+docker run -p 8080:8080 starlancer
 
-```bash
-npm i
-npm run start
-```
 
-### Updating
+⸻
 
-```bash
-cd Interstellar
-git pull --force --allow-unrelated-histories # This may overwrite your local changes
-```
+⚙️ Configuration
 
-<a target="_blank" href="https://heroku.com/deploy/?template=https://github.com/UseInterstellar/Interstellar"><img alt="Deploy to Heroku" src="https://binbashbanana.github.io/deploy-buttons/buttons/remade/heroku.svg"></a>
-<a target="_blank" href="https://app.koyeb.com/deploy?type=git&repository=github.com/UseInterstellar/Interstellar"><img alt="Deploy to Koyeb" src="https://binbashbanana.github.io/deploy-buttons/buttons/remade/koyeb.svg"></a>
+Set environment variables as needed:
 
-### Deployment Alternatives
+Variable	Description	Example
+CHALLENGE	Enables basic-auth challenge if true	true
+USERS	Comma-separated user:pass pairs	admin:secret,user:test123
+TRUSTED_ORIGINS	Comma list of allowed domains	localhost,example.com
 
-For more deployment options, join our [Discord Server](https://discord.gg/interstellar) for various ways to deploy Starlancer.
-This includes methods of deploying to Render/OnRender.
+You can also create a .env file in the project root.
 
-#### What happened to Replit Deployment?
+⸻
 
-As of January 1st, 2024, Replit is [no longer free](https://blog.replit.com/hosting-changes). Try GitHub Codespaces instead.
+🛠 Developer Notes
+	•	All new PRs should merge into add-free first.
+	•	main branch stays stable and clean.
+	•	This project uses pnpm. Delete package-lock.json if present.
+	•	Large install crashes? Try:
 
-### GitHub Codespaces
+export NODE_OPTIONS="--max-old-space-size=4096"
+pnpm install
 
-> [!NOTE]
-> If you're setting the port below 1023, then you must run `sudo PORT=1023`
 
-1. Create a GitHub account if you haven't already.
-2. Click "Code" (green button) and then "Create Codespace on main."
-3. In the terminal at the bottom, paste `pnpm i && pnpm start`.
-4. Respond to the application popup by clicking "Make public."
-> [!IMPORTANT]
-> Make sure you click the "Make public." button, or the proxy won't function properly.<br>
-> If you get a Range Error, go back and make sure you clicked Make public!
-5. Access the deployed website from the ports tab.
-6. For subsequent uses in the same codespace, just run `pnpm start`
 
-### Solution for if there is no popup.
+⸻
 
-1. Run `pnpm i`, and before `pnpm start`, prepend `PORT=8080`, replacing 8080 with another port. For example, `PORT=6969 pnpm start`.
-2. If this does not work then you can prepend `$env:PORT=8080;`, replacing 8080 with another port. For example, `$env:PORT=6969; pnpm start`
-3. Go to the ports tab, Click Forward A Port, And type the port number.
-4. Right-click Visibility and set Port Visibility to Public.
+🧠 Philosophy
 
-> [!NOTE]
-> We are committed to making Starlancer easy and personalized however, as of now we need your support in making it ad-free. Consider keeping ads so Starlancer can run freely or contribute by being a supporter.
+We didn’t just write code. We built a framework to learn, test, and challenge what’s possible with code + AI agents. Every piece is a deliberate step toward something better—cleaner, smarter, faster.
 
-## Report Issues
+“We’re not here to copy. We’re here to create.”
 
-If you encounter problems, open an issue on GitHub, and we'll address it promptly.
+Built with ✨ by Arjun + Codex.
 
-> [!TIP]
-> If you're having trouble, don't hesitate to reach out to us on [Discord](https://discord.gg/interstellar) for personalized support.
+---
 
-# Credits
-
-A huge thanks goes out to all of the people who have contributed to Starlancer.
-
-[![Contributors](https://contrib.rocks/image?repo=UseInterstellar/Interstellar)](https://github.com/UseInterstellar/Interstellar/graphs/contributors)
+Let me know if you want to tailor it more for a specific use case (school bypass, AI CLI, etc.), or if you want to add badges, deployment buttons, or links to docs/demo videos.
