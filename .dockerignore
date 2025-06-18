@@ -1,0 +1,11 @@
+# Exclude unnecessary files from Docker context
+.git
+.github
+.vscode
+
+# Ignore tests and markdown files
+tests/
+*.md
+
+# Ignore node_modules for production installs
+node_modules
