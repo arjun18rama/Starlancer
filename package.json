@@ -1,5 +1,5 @@
 {
-  "name": "interstellar",
+  "name": "starlancer",
   "version": "5.2.5",
   "type": "module",
   "engines": {
@@ -13,7 +13,7 @@
     "lint": "biome lint --write .",
     "test": "jest"
   },
-  "author": "InterstellarNetwork",
+  "author": "StarlancerNetwork",
   "license": "GPL-3.0-or-later",
   "dependencies": {
     "@nebula-services/bare-server-node": "^2.0.4",
