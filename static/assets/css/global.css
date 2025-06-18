@@ -5,21 +5,21 @@
    /* Background Variables */
    --background-image: url("/./assets/media/background/full-main.png"); /* Background Image */
    --backdrop-filter: blur(10px) brightness(80%); /* Nav Backdrop filter */
-   --background-nav: #00274C; /* Nav Background */
-   --background-color: #00274C; /* Main Background Color */
+   --background-nav: #00274c; /* Nav Background */
+   --background-color: #00274c; /* Main Background Color */
    --background-input: #ffefa3; /* Input Field Background Color */
-   --background-column: #00274C; /* Background for Apps Container */
-   --background-settings: #00274C; /* Settings Card Background */
-   --background-buttons: #00274C; /* Button Background Color */
-   --tab-active-background: #FFCB05; /* Accent Color for Tabs */
-   --tab-inactive-background: #00274C; /* Background Color for Tabs Not In Use */
-   --slider-active-background: #FFCB05; /* Active Slider Background Color */
-   --slider-inactive-background: #FFCB05; /*  Slider Background Color */
+   --background-column: #00274c; /* Background for Apps Container */
+   --background-settings: #00274c; /* Settings Card Background */
+   --background-buttons: #00274c; /* Button Background Color */
+   --tab-active-background: #ffcb05; /* Accent Color for Tabs */
+   --tab-inactive-background: #00274c; /* Background Color for Tabs Not In Use */
+   --slider-active-background: #ffcb05; /* Active Slider Background Color */
+   --slider-inactive-background: #ffcb05; /*  Slider Background Color */
    --nav-image: url("/./assets/media/favicon/main.png"); /* Nav Logo */
    /* Text Variables */
-   --text-primary: #FFCB05; /* Primary Text Color */
-   --text-dark: #FFCB05; /* Dark Text Color for Error Page, Scrollbar, and Particles */
-   --text-placeholder: #FFCB05; /* Placeholder Text Color */
+   --text-primary: #ffcb05; /* Primary Text Color */
+   --text-dark: #ffcb05; /* Dark Text Color for Error Page, Scrollbar, and Particles */
+   --text-placeholder: #ffcb05; /* Placeholder Text Color */
    /* Other Variables */
    --save-button: #4caf50; /* Save Button, Typically Green */
    --reset-button: #f44336; /* Reset Button, Typically Red */

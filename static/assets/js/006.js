@@ -378,16 +378,16 @@ function exportSaveData() {
   function getCookies() {
     const cookies = document.cookie.split("; ");
     const cookieObj = {};
-    cookies.forEach(cookie => {
+    for (const cookie of cookies) {
       const [name, value] = cookie.split("=");
       cookieObj[name] = value;
-    });
+    }
     return cookieObj;
   }
   function getLocalStorage() {
     const localStorageObj = {};
     for (const key in localStorage) {
-      if (localStorage.hasOwnProperty(key)) {
+      if (Object.hasOwn(localStorage, key)) {
         localStorageObj[key] = localStorage.getItem(key);
       }
     }
@@ -421,14 +421,14 @@ function importSaveData() {
       try {
         const data = JSON.parse(e.target.result);
         if (data.cookies) {
-          Object.entries(data.cookies).forEach(([key, value]) => {
+          for (const [key, value] of Object.entries(data.cookies)) {
             document.cookie = `${key}=${value}; path=/`;
-          });
+          }
         }
         if (data.localStorage) {
-          Object.entries(data.localStorage).forEach(([key, value]) => {
+          for (const [key, value] of Object.entries(data.localStorage)) {
             localStorage.setItem(key, value);
-          });
+          }
         }
         alert("Your save data has been imported. Please test it out.");
         alert(

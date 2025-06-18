@@ -25,10 +25,10 @@ document.addEventListener("DOMContentLoaded", event => {
         },
         shape: {
           type: "circle",
-            stroke: {
-              width: 0,
-              color: "#FFCB05",
-            },
+          stroke: {
+            width: 0,
+            color: "#FFCB05",
+          },
           polygon: {
             nb_sides: 5,
           },
