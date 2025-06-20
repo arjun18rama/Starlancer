@@ -64,7 +64,7 @@ docker run -p 8080:8080 starlancer
 
 
 
-⸻
+⸻[![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/deploy?name=starlancer&repository=arjun18rama%2FStarlancer&branch=main&instance_type=free&regions=was&instances_min=0&autoscaling_sleep_idle_delay=300)
 
 ⚙️ Configuration
 
