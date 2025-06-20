@@ -2,7 +2,7 @@
 
 ⸻
 
-
+[![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/deploy?name=starlancer&repository=arjun18rama%2FStarlancer&branch=main&instance_type=free&regions=was&instances_min=0&autoscaling_sleep_idle_delay=300)
 # 🚀 Starlancer
 
 **Starlancer** is a next-gen proxy + AI tooling platform built with performance, stealth, and flexibility in mind. Developed by **Arjun** and powered by **OpenAI Codex (o3)**, it's designed to push past traditional limits—whether you're bypassing filtered networks, logging command telemetry, or crafting a fully modular security-aware backend.
@@ -63,8 +63,6 @@ docker run -p 8080:8080 starlancer
 4. Expose port `8080` and deploy the service.
 
 
-
-⸻[![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/deploy?name=starlancer&repository=arjun18rama%2FStarlancer&branch=main&instance_type=free&regions=was&instances_min=0&autoscaling_sleep_idle_delay=300)
 
 ⚙️ Configuration
 
